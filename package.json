@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json",
+    "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json"
   },
   "repository": {
     "type": "git",
