@@ -1,7 +1,7 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://smart-systems.xyz"><img src="../SMSBannerC.png" width="546" alt="SMS Logo" id="banner" /></a>
+    <a href="https://smart-systems.xyz"><img src="https://cdn.discordapp.com/attachments/628756152972214283/744839487326257222/SSBannerC.png" alt="SMS Logo" id="banner" /></a>
   </p>
   <br>
   <p>
@@ -29,7 +29,7 @@ SmartOauth is the newest and easiest npm module that allows you to eaisly add oa
 
 NPM Command: `npm install SmartOAuth` 
 
-#
+
 ## Example usage
 
 Coming soon!
