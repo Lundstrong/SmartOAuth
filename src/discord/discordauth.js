@@ -1,11 +1,28 @@
 const { get, post } = require('axios');
 const query = require('querystring');
 
+/**
+ *
+ *
+ * @class Discord
+ */
 class Discord {
+  /**
+   * Creates an instance of Discord.
+   * @param {JSON} Config
+   * @memberof Discord
+   */
   constructor(Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.');
     this.Config = Config;
   }
+  /**
+   *
+   *
+   * @param {String} code
+   * @return {JSON} 
+   * @memberof Discord
+   */
   async getToken(code) {
     if (!code) throw new Error('Provide a code.');
 
@@ -25,8 +42,15 @@ class Discord {
 
     if (data) {
       return data.data;
-    } else return 'Invalid code.';
+    } else throw new Error('Invalid code.');
   }
+  /**
+   *
+   *
+   * @param {String} code
+   * @return {JSON} 
+   * @memberof Discord
+   */
   async getUser(code) {
     if (!code) throw new Error('Provide a code.');
 
