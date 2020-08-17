@@ -1,18 +1,18 @@
 <div align="center">
   <br />
   <p>
-    <a href="https://smart-systems.xyz"><img src="/static/SMSBannerC.png" width="546" alt="SMS Logo" id="banner" /></a>
+    <a href="https://smart-systems.xyz"><img src="../SMSBannerC.png" width="546" alt="SMS Logo" id="banner" /></a>
   </p>
   <br>
   <p>
     <a href="https://discord.gg/J7j4wJQ"><img src="https://img.shields.io/discord/651322583328751627?color=7289da&logo=discord&logoColor=white" alt="Discord server" /></a>
-    <a href="https://www.npmjs.com/package/SmartOAuth"><img src="https://img.shields.io/npm/v/SmartOAuth.svg?maxAge=3600" alt="NPM version" /></a>
-    <a href="https://www.npmjs.com/package/SmartOAuth"><img src="https://img.shields.io/npm/dt/SmartOAuth.svg?maxAge=3600" alt="NPM downloads" /></a>
-    <a href="https://travis-ci.org/SmartSystemsGithub/SmartOAuth"><img src="https://travis-ci.org/SmartSystemsGithub/SmartOAuth.svg" alt="Build status" /></a>
-    <a href="https://david-dm.org/SmartSystemsGithub/SmartOAuth"><img src="https://img.shields.io/david/SmartSystemsGithub/SmartOAuth.svg?maxAge=3600" alt="Dependencies" /></a></a>
+    <a href="https://www.npmjs.com/package/smartoauth"><img src="https://img.shields.io/npm/v/smartoauth.svg?maxAge=3600" alt="NPM version" /></a>
+    <a href="https://www.npmjs.com/package/smartoauth"><img src="https://img.shields.io/npm/dt/smartoauth.svg?maxAge=3600" alt="NPM downloads" /></a>
+    <a href="https://travis-ci.org/SmartSystemsGithub/smartoauth"><img src="https://travis-ci.org/SmartSystemsGithub/smartoauth.svg" alt="Build status" /></a>
+    <a href="https://david-dm.org/SmartSystemsGithub/smartoauth"><img src="https://img.shields.io/david/SmartSystemsGithub/smartoauth.svg?maxAge=3600" alt="Dependencies" /></a></a>
   </p>
   <p>
-    <a href="https://nodei.co/npm/SmartOAuth/"><img src="https://nodei.co/npm/SmartOAuth.png?downloads=true&stars=true" alt="NPM info" /></a>
+    <a href="https://nodei.co/npm/smartoauth/"><img src="https://nodei.co/npm/smartoauth.png?downloads=true&stars=true" alt="NPM info" /></a>
   </p>
 </div>
 
@@ -39,4 +39,4 @@ Coming soon!
 - [Website](https://smart-systems.xyz/)
 - [Documentation (Coming soon!)](https://docs.smart-systems.xyz)
 - [GitHub](https://github.com/SmartSystemsGithub/SmartOAuth)
-- [NPM](https://www.npmjs.com/package/SmartOAuth)
+- [NPM](https://www.npmjs.com/package/smartoauth)
