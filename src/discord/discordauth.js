@@ -1,7 +1,7 @@
 const { get, post } = require('axios');
 const query = require('querystring');
 
-class oAuth {
+class Discord {
   constructor(Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.');
     this.Config = Config;
@@ -54,4 +54,4 @@ class oAuth {
   }
 }
 
-module.exports = oAuth;
+module.exports = Discord;
