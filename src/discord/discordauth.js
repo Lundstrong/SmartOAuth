@@ -11,7 +11,7 @@ class Discord {
   /**
    * Creates an instance of the DiscordOAuth Client.
    * 
-   * @param {object} Config - A JSON with the configuration for the discord oauth.
+   * @param {Object} Config - A JSON with the configuration for the discord oauth.
    */
   constructor(Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.');
@@ -49,7 +49,7 @@ class Discord {
    * This functions gives the ability to get information about the user.
    *
    * @param {String} code  - The code provided with the discord callback.
-   * @returns {Object} - An object is retured which shows the users, ID, profile picture and Nitro status.
+   * @returns {Object} An Object is retured which shows the users, ID, profile picture and Nitro status.
    * @memberof Discord
    */
   async getUser(code) {
