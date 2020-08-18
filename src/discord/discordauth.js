@@ -5,22 +5,23 @@ const query = require('querystring');
  *
  *
  * @class Discord
+ * Represents the class for a discord-oauth.
  */
 class Discord {
   /**
-   * Creates an instance of Discord.
-   * @param {JSON} Config
-   * @memberof Discord
+   * Creates an instance of the DiscordOAuth Client.
+   * 
+   * @param {object} Config - A JSON with the configuration for the discord oauth.
    */
   constructor(Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.');
     this.Config = Config;
   }
   /**
+   * This function gives the ability to get a User's token. This is not to be confused with GetUser.
    *
-   *
-   * @param {String} code
-   * @return {JSON} 
+   * @param {String} code - The code provided with the discord callback.
+   * @returns {String} The User's token.
    * @memberof Discord
    */
   async getToken(code) {
@@ -45,10 +46,10 @@ class Discord {
     } else throw new Error('Invalid code.');
   }
   /**
+   * This functions gives the ability to get information about the user.
    *
-   *
-   * @param {String} code
-   * @return {JSON} 
+   * @param {String} code  - The code provided with the discord callback.
+   * @returns {Object} - An object is retured which shows the users, ID, profile picture and Nitro status.
    * @memberof Discord
    */
   async getUser(code) {
