@@ -1,5 +1,5 @@
-const { get, post } = require('axios');
-const query = require('querystring');
+const { get, post } = require('axios')
+const query = require('querystring')
 
 /**
  *
@@ -10,13 +10,14 @@ const query = require('querystring');
 class Discord {
   /**
    * Creates an instance of the DiscordOAuth Client.
-   * 
+   *
    * @param {Object} Config - A JSON with the configuration for the discord oauth.
    */
-  constructor(Config) {
-    if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.');
-    this.Config = Config;
+  constructor (Config) {
+    if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.')
+    this.Config = Config
   }
+
   /**
    * This function gives the ability to get a User's token. This is not to be confused with GetUser.
    *
@@ -24,8 +25,8 @@ class Discord {
    * @returns {String} The User's token.
    * @memberof Discord
    */
-  async getToken(code) {
-    if (!code) throw new Error('Provide a code.');
+  async getToken (code) {
+    if (!code) throw new Error('Provide a code.')
 
     const data = await post('https://discord.com/api/v7/oauth2/token', query.stringify({
       client_id: this.Config.client_id,
@@ -38,13 +39,14 @@ class Discord {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).catch(err => {
-      if (err.response.status === 400) return;
-    });
+      if (err.response.status === 400) return
+    })
 
     if (data) {
-      return data.data;
-    } else throw new Error('Invalid code.');
+      return data.data
+    } else throw new Error('Invalid code.')
   }
+
   /**
    * This functions gives the ability to get information about the user.
    *
@@ -52,8 +54,8 @@ class Discord {
    * @returns {Object} An Object is retured which shows the users, ID, profile picture and Nitro status.
    * @memberof Discord
    */
-  async getUser(code) {
-    if (!code) throw new Error('Provide a code.');
+  async getUser (code) {
+    if (!code) throw new Error('Provide a code.')
 
     const data = await post('https://discord.com/api/v7/oauth2/token', query.stringify({
       client_id: this.Config.client_id,
@@ -66,17 +68,17 @@ class Discord {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).catch(err => {
-      if (err.response.status === 400) return;
-    });
-    if (!data) return 'Invalid Code';
+      if (err.response.status === 400) return
+    })
+    if (!data) return 'Invalid Code'
 
     const user = await get('https://discordapp.com/api/v7/users/@me', {
       headers: {
-        'Authorization': `Bearer ${data.data.access_token}`
+        Authorization: `Bearer ${data.data.access_token}`
       }
-    });
-    return user.data;
+    })
+    return user.data
   }
 }
 
-module.exports = Discord;
+module.exports = Discord
