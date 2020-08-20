@@ -27,7 +27,7 @@ class GitHub {
      *
      * @param {String} code - The code provided with the discord callback.
      * @returns {String} The User's token.
-     * @memberof Discord
+     * @memberof GitHub
      */
     async getToken(code) {
         if (!code) throw new Error('Provide a code.')
@@ -60,7 +60,7 @@ class GitHub {
      *
      * @param {String} token  - The code provided with the GitHub callback.
      * @returns {GithubUser} An Object is retured which shows the username, ID, avatar and more.
-     * @memberof Discord
+     * @memberof GitHub
      */
 
     async getUserFromToken(token) {
@@ -82,7 +82,7 @@ class GitHub {
      *
      * @param {String} code  - The code provided with the github callback.
      * @returns {GithubUser} An Object is retured which shows the username, ID, avatr and more.
-     * @memberof Discord
+     * @memberof GitHub
      */
     async getUserFromCode(code) {
         if (!code) throw new Error('Provide a code.')
