@@ -16,9 +16,7 @@ class GithubUser {
     create(data) {
         if ('login' in data) {
             /**
-             * The username of the user
-             * @type {string}
-             * @name User#username
+             * @property {string} username - The username of the user
              */
             this.username = data.login;
         } else if (typeof this.username !== 'string') {
@@ -26,9 +24,7 @@ class GithubUser {
         }
         if ('id' in data) {
             /**
-             * The id of the user
-             * @type {Number}
-             * @name User#userid
+             * @property {Number} userid - The id of the user
              */
             this.userid = data.id;
         } else if (typeof this.userid !== 'Number') {
@@ -36,9 +32,7 @@ class GithubUser {
         }
         if ('avatar_url' in data) {
             /**
-             * The URL to the avatar of the user
-             * @type {string}
-             * @name User#avatar
+             * @property {string} avatar - The URL to the avatar of the user
              */
             this.avatar = data.avatar_url;
         } else if (typeof this.avatar !== 'string') {
@@ -46,19 +40,15 @@ class GithubUser {
         }
         if ('bio' in data) {
             /**
-             * The bio of the user.
-             * @type {Number}
-             * @name User#bio
+             * @property {string} bio - The bio of the user.
              */
             this.bio = data.bio;
-        } else if (typeof this.bio !== 'Number') {
+        } else if (typeof this.bio !== 'string') {
             this.bio = null;
         }
         if ('two_factor_authentication' in data) {
             /**
-             * If the user has two factor/muti factor authentication on.
-             * @type {Boolean}
-             * @name User#mfa
+             * @property {Boolean} mfa - If the user has two factor/muti factor authentication on.
              */
             this.mfa = data.two_factor_authentication;
         } else if (typeof this.mfa !== 'Boolean') {
@@ -66,9 +56,7 @@ class GithubUser {
         }
         if ('location' in data) {
             /**
-             * The location the user has set themselves to be shown as.
-             * @type {string}
-             * @name User#location
+             * @property {string} location - The location the user has set themselves to be shown as.
              */
             this.location = data.location;
         } else if (typeof this.location !== 'string') {
@@ -76,9 +64,7 @@ class GithubUser {
         }
         if ('email' in data) {
             /**
-             * The email the user has set themselves to have.
-             * @type {string}
-             * @name User#email
+             * @property {string} email - The email the user has set themselves to have.
              */
             this.email = data.email;
         } else if (typeof this.email !== 'string') {
@@ -86,9 +72,7 @@ class GithubUser {
         }
         if ('twitter_username' in data) {
             /**
-             * The Twitter Username the user has set themselves to have.
-             * @type {string}
-             * @name User#twitter
+             * @property {string} twitter - The Twitter Username the user has set themselves to have.
              */
             this.twitter = data.twitter_username;
         } else if (typeof this.twitter !== 'string') {
@@ -96,9 +80,7 @@ class GithubUser {
         }
         if ('plan' in data) {
             /**
-             * The 
-             * @type {Object}
-             * @name User#plan
+             * @property {Object} plan - The Github plan the user is on.
              */
             this.plan = data.plan;
         } else if (typeof this.plan !== 'Object') {
@@ -106,9 +88,7 @@ class GithubUser {
         }
         if ('public_repos' in data && 'owned_private_repos' in data) {
             /**
-             * The repos the user owns.
-             * @type {Object}
-             * @name User#repos
+             * @property {Object} repos - The repos the user owns.
              */
             this.repos = {
                 public: data.public_repos,
@@ -119,9 +99,7 @@ class GithubUser {
         }
         if ('public_gists' in data && 'private_gists' in data) {
             /**
-             * The repos the user owns.
-             * @type {Object}
-             * @name User#gists
+             * @property {Object} gists - The repos the user owns.
              */
             this.gists = {
                 public: data.public_gists,

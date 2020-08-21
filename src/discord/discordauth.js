@@ -1,5 +1,6 @@
 const { get, post } = require('axios')
 const query = require('querystring')
+const DiscordUser = require('./discorduser.js')
 
 /**
  *
@@ -48,13 +49,13 @@ class Discord {
   }
 
   /**
-   * This functions gives the ability to get information about the user.
+   * This functions gives the ability to get information about the user from the code.
    *
    * @param {String} code  - The code provided with the discord callback.
-   * @returns {Object} An Object is retured which shows the users, ID, profile picture and Nitro status.
+   * @returns {DiscordUser} The DiscordUser class is retured which shows the users, ID, profile picture and Nitro status.
    * @memberof Discord
    */
-  async getUser (code) {
+  async getUserFromCode (code) {
     if (!code) throw new Error('Provide a code.')
 
     const data = await post('https://discord.com/api/v7/oauth2/token', query.stringify({
@@ -75,6 +76,21 @@ class Discord {
     const user = await get('https://discordapp.com/api/v7/users/@me', {
       headers: {
         Authorization: `Bearer ${data.data.access_token}`
+      }
+    })
+    return user.data
+  }
+  /**
+   * This functions gives the ability to get information about the user from the code.
+   *
+   * @param {String} token  - The token is provided using the getToken method.
+   * @returns {DiscordUser} The DiscordUser class is retured which shows the users, ID, profile picture and Nitro status.
+   * @memberof Discord
+   */
+  async getUserFromToken (token) {
+    const user = await get('https://discordapp.com/api/v7/users/@me', {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
     })
     return user.data

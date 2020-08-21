@@ -78,7 +78,7 @@ class GitHub {
         return new GithubUser(user.data)
     }
      /**
-     * This functions gives the ability to get information about the user from the TOKEN. You may want to use GetUserFromCode instead.
+     * This functions gives the ability to get information about the user from the callback CODE. You may want to use GetUserFromToken instead.
      *
      * @param {String} code  - The code provided with the github callback.
      * @returns {GithubUser} An Object is retured which shows the username, ID, avatr and more.
