@@ -1,123 +1,113 @@
-const {
-    get,
-    post
-} = require('axios')
-const query = require('querystring')
-const GithubUser = require('./githubuser')
-
 /**
  *
  *
- * @class Github
- * Represents the class for a github-based-oauth.
+ * @class GithubUser
+ * Represents the class for a github-oauth User.
  */
-class GitHub {
+class GithubUser {
     /**
      * Creates an instance of the Github-based OAuth Client.
      *
-     * @param {Object} Config - A JSON with the configuration for the github oauth.
+     * @param {Object} Config - The data of the user.
      */
     constructor(Config) {
-        if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.')
-        this.Config = Config
+        this.create(Config)
     }
-
-    /**
-     * This function gives the ability to get a User's token. This is not to be confused with GetUserFromToken/GetUserFromCode.
-     *
-     * @param {String} code - The code provided with the discord callback.
-     * @returns {String} The User's token.
-     * @memberof GitHub
-     */
-    async getToken(code) {
-        if (!code) throw new Error('Provide a code.')
-
-        const data = await post('https://github.com/login/oauth/access_token', query.stringify({
-            client_id: this.Config.client_id,
-            client_secret: this.Config.client_secret,
-            code: code,
-            redirect_uri: this.Config.callback
-        }), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json'
-            }
-        }).catch(err => {
-            if (err.response.status === 400) return
-        })
-
-        if (data) {
-            if (data.data.error) {
-                throw new Error(data.data.error + " (" + data.data.error_description + ")")
-            } else {
-                return data.data
-            }
-        } else throw new Error('Invalid code.')
-    }
-
-    /**
-     * This functions gives the ability to get information about the user from the TOKEN. You may want to use GetUserFromCode instead.
-     *
-     * @param {String} token  - The code provided with the GitHub callback.
-     * @returns {GithubUser} An Object is retured which shows the username, ID, avatar and more.
-     * @memberof GitHub
-     */
-
-    async getUserFromToken(token) {
-        if (!token) throw new Error('Provide a token.')
-        var user
-        try {
-            user = await get('https://api.github.com/user', {
-                headers: {
-                    Authorization: `token ${token}`
-                }
-            })
-        } catch (err) {
-            console.error(err)
+    create(data) {
+        if ('login' in data) {
+            /**
+             * @type {string} username - The username of the user
+             */
+            this.username = data.login;
+        } else if (typeof this.username !== 'string') {
+            this.username = null;
         }
-        return new GithubUser(user.data)
-    }
-     /**
-     * This functions gives the ability to get information about the user from the callback CODE. You may want to use GetUserFromToken instead.
-     *
-     * @param {String} code  - The code provided with the github callback.
-     * @returns {GithubUser} An Object is retured which shows the username, ID, avatr and more.
-     * @memberof GitHub
-     */
-    async getUserFromCode(code) {
-        if (!code) throw new Error('Provide a code.')
-
-        const data = await post('https://github.com/login/oauth/access_token', query.stringify({
-            client_id: this.Config.client_id,
-            client_secret: this.Config.client_secret,
-            code: code,
-            redirect_uri: this.Config.callback
-        }), {
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json'
-            }
-        }).catch(err => {
-            if (err.response.status === 400) return
-        })
-
-        if (data) {
-            if (data.data.error) {
-                throw new Error(data.data.error + " (" + data.data.error_description + ")")
-            }
-        } else throw new Error('Invalid code.')
-        var user
-        try {
-            user = await get('https://api.github.com/user', {
-                headers: {
-                    Authorization: `token ${data.data.access_token}`
-                }
-            })
-        } catch (err) {
-            console.error(err)
+        if ('id' in data) {
+            /**
+             * @type {Number} userid - The id of the user
+             */
+            this.userid = data.id;
+        } else if (typeof this.userid !== 'Number') {
+            this.userid = null;
         }
-        return new GithubUser(user.data)
+        if ('avatar_url' in data) {
+            /**
+             * @type {string} avatar - The URL to the avatar of the user
+             */
+            this.avatar = data.avatar_url;
+        } else if (typeof this.avatar !== 'string') {
+            this.avatar = null;
+        }
+        if ('bio' in data) {
+            /**
+             * @type {string} bio - The bio of the user.
+             */
+            this.bio = data.bio;
+        } else if (typeof this.bio !== 'string') {
+            this.bio = null;
+        }
+        if ('two_factor_authentication' in data) {
+            /**
+             * @type {Boolean} mfa - If the user has two factor/muti factor authentication on.
+             */
+            this.mfa = data.two_factor_authentication;
+        } else if (typeof this.mfa !== 'Boolean') {
+            this.mfa = null;
+        }
+        if ('location' in data) {
+            /**
+             * @type {string} location - The location the user has set themselves to be shown as.
+             */
+            this.location = data.location;
+        } else if (typeof this.location !== 'string') {
+            this.location = null;
+        }
+        if ('email' in data) {
+            /**
+             * @type {string} email - The email the user has set themselves to have.
+             */
+            this.email = data.email;
+        } else if (typeof this.email !== 'string') {
+            this.email = null;
+        }
+        if ('twitter_username' in data) {
+            /**
+             * @type {string} twitter - The Twitter Username the user has set themselves to have.
+             */
+            this.twitter = data.twitter_username;
+        } else if (typeof this.twitter !== 'string') {
+            this.twitter = null;
+        }
+        if ('plan' in data) {
+            /**
+             * @type {Object} plan - The Github plan the user is on.
+             */
+            this.plan = data.plan;
+        } else if (typeof this.plan !== 'Object') {
+            this.plan = null;
+        }
+        if ('public_repos' in data && 'owned_private_repos' in data) {
+            /**
+             * @type {Object} repos - The repos the user owns.
+             */
+            this.repos = {
+                public: data.public_repos,
+                private: data.owned_private_repos
+            };
+        } else if (typeof this.repos !== 'Object') {
+            this.repos = null;
+        }
+        if ('public_gists' in data && 'private_gists' in data) {
+            /**
+             * @type {Object} gists - The repos the user owns.
+             */
+            this.gists = {
+                public: data.public_gists,
+                private: data.private_gists
+            };
+        } else if (typeof this.gists !== 'Object') {
+            this.gists = null;
+        }
     }
 }
-
-module.exports = GitHub
+module.exports = GithubUser
