@@ -16,7 +16,7 @@ class GithubUser {
     create(data) {
         if ('login' in data) {
             /**
-             * @property {string} username - The username of the user
+             * @type {string} username - The username of the user
              */
             this.username = data.login;
         } else if (typeof this.username !== 'string') {
@@ -24,7 +24,7 @@ class GithubUser {
         }
         if ('id' in data) {
             /**
-             * @property {Number} userid - The id of the user
+             * @type {Number} userid - The id of the user
              */
             this.userid = data.id;
         } else if (typeof this.userid !== 'Number') {
@@ -32,7 +32,7 @@ class GithubUser {
         }
         if ('avatar_url' in data) {
             /**
-             * @property {string} avatar - The URL to the avatar of the user
+             * @type {string} avatar - The URL to the avatar of the user
              */
             this.avatar = data.avatar_url;
         } else if (typeof this.avatar !== 'string') {
@@ -40,7 +40,7 @@ class GithubUser {
         }
         if ('bio' in data) {
             /**
-             * @property {string} bio - The bio of the user.
+             * @type {string} bio - The bio of the user.
              */
             this.bio = data.bio;
         } else if (typeof this.bio !== 'string') {
@@ -48,7 +48,7 @@ class GithubUser {
         }
         if ('two_factor_authentication' in data) {
             /**
-             * @property {Boolean} mfa - If the user has two factor/muti factor authentication on.
+             * @type {Boolean} mfa - If the user has two factor/muti factor authentication on.
              */
             this.mfa = data.two_factor_authentication;
         } else if (typeof this.mfa !== 'Boolean') {
@@ -56,7 +56,7 @@ class GithubUser {
         }
         if ('location' in data) {
             /**
-             * @property {string} location - The location the user has set themselves to be shown as.
+             * @type {string} location - The location the user has set themselves to be shown as.
              */
             this.location = data.location;
         } else if (typeof this.location !== 'string') {
@@ -64,7 +64,7 @@ class GithubUser {
         }
         if ('email' in data) {
             /**
-             * @property {string} email - The email the user has set themselves to have.
+             * @type {string} email - The email the user has set themselves to have.
              */
             this.email = data.email;
         } else if (typeof this.email !== 'string') {
@@ -72,7 +72,7 @@ class GithubUser {
         }
         if ('twitter_username' in data) {
             /**
-             * @property {string} twitter - The Twitter Username the user has set themselves to have.
+             * @type {string} twitter - The Twitter Username the user has set themselves to have.
              */
             this.twitter = data.twitter_username;
         } else if (typeof this.twitter !== 'string') {
@@ -80,7 +80,7 @@ class GithubUser {
         }
         if ('plan' in data) {
             /**
-             * @property {Object} plan - The Github plan the user is on.
+             * @type {Object} plan - The Github plan the user is on.
              */
             this.plan = data.plan;
         } else if (typeof this.plan !== 'Object') {
@@ -88,7 +88,7 @@ class GithubUser {
         }
         if ('public_repos' in data && 'owned_private_repos' in data) {
             /**
-             * @property {Object} repos - The repos the user owns.
+             * @type {Object} repos - The repos the user owns.
              */
             this.repos = {
                 public: data.public_repos,
@@ -99,7 +99,7 @@ class GithubUser {
         }
         if ('public_gists' in data && 'private_gists' in data) {
             /**
-             * @property {Object} gists - The repos the user owns.
+             * @type {Object} gists - The repos the user owns.
              */
             this.gists = {
                 public: data.public_gists,
