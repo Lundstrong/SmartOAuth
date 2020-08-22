@@ -78,7 +78,7 @@ class Discord {
         Authorization: `Bearer ${data.data.access_token}`
       }
     })
-    return user.data
+    return new DiscordUser(user.data)
   }
   /**
    * This functions gives the ability to get information about the user from the code.
@@ -93,7 +93,7 @@ class Discord {
         Authorization: `Bearer ${token}`
       }
     })
-    return user.data
+    return new DiscordUser(user.data)
   }
 }
 
