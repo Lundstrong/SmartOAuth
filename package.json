@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/SmartSystemsGithub/SmartOAuth#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "querystring": "^0.2.0"
   },
   "devDependencies": {
