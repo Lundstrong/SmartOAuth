@@ -4,7 +4,9 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "test": "npm run docs:test",
+    "test": "npm run standard && npm run docs:test",
+    "standard": "standard",
+    "standard:fix": "standard --fix",
     "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json",
     "docs:test": "docgen --source src --custom docs/index.yml"
   },
@@ -23,6 +25,7 @@
     "querystring": "^0.2.0"
   },
   "devDependencies": {
+    "standard": "^14.3.4",
     "docgen": "discordjs/docgen"
   }
 }
