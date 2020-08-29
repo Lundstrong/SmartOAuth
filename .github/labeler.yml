@@ -1,0 +1,8 @@
+Discord:
+  - src/discord/**/*
+
+GitHub:
+  - src/github/**/*
+
+Docs:
+  - src/github/**/*
