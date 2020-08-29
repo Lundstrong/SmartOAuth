@@ -5,7 +5,7 @@ module.exports = {
 
   Github: require('./github/githubauth.js'),
   GithubUser: require('./github/githubuser.js'),
-  
+
   // Util
   Version: require('../package.json').version
 }

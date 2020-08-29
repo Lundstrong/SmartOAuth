@@ -1,4 +1,7 @@
-const { get, post } = require('axios')
+const {
+  get,
+  post
+} = require('axios')
 const query = require('querystring')
 const DiscordUser = require('./discorduser.js')
 
@@ -40,7 +43,7 @@ class Discord {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).catch(err => {
-      if (err.response.status === 400) return
+      if (err.response.status !== 400) console.err(err)
     })
 
     if (data) {
@@ -69,7 +72,7 @@ class Discord {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }).catch(err => {
-      if (err.response.status === 400) return
+      if (err.response.status !== 400) console.err(err)
     })
     if (!data) return 'Invalid Code'
 
@@ -80,6 +83,7 @@ class Discord {
     })
     return new DiscordUser(user.data)
   }
+
   /**
    * This functions gives the ability to get information about the user from the code.
    *
