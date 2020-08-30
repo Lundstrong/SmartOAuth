@@ -36,7 +36,7 @@ Coming soon!
 
 ## Links
 
-- [Website](https://smart-systems.xyz/)
-- [Documentation (Coming soon!)](https://docs.smart-systems.xyz)
+- [Website](https://beta.smart-systems.xyz/)
+- [Documentation](https://docs.smart-systems.xyz)
 - [GitHub](https://github.com/SmartSystemsGithub/SmartOAuth)
 - [NPM](https://www.npmjs.com/package/smartoauth)
