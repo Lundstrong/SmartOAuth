@@ -8,7 +8,7 @@ class GithubUser {
   /**
    * Creates an instance of the Github-based OAuth Client.
    *
-   * @param {object} Config - The data of the user.
+   * @param {Object} Config - The data of the user.
    */
   constructor (Config) {
     this.create(Config)
@@ -81,7 +81,7 @@ class GithubUser {
     }
     if ('plan' in data) {
       /**
-       * @type {object} plan - The Github plan the user is on.
+       * @type {Object} plan - The Github plan the user is on.
        */
       this.plan = data.plan
     } else if (typeof this.plan !== 'object') {
@@ -89,7 +89,7 @@ class GithubUser {
     }
     if ('public_repos' in data && 'owned_private_repos' in data) {
       /**
-       * @type {object} repos - The repos the user owns.
+       * @type {Object} repos - The repos the user owns.
        */
       this.repos = {
         public: data.public_repos,
@@ -100,7 +100,7 @@ class GithubUser {
     }
     if ('public_gists' in data && 'private_gists' in data) {
       /**
-       * @type {object} gists - The repos the user owns.
+       * @type {Object} gists - The repos the user owns.
        */
       this.gists = {
         public: data.public_gists,
