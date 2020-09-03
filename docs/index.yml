@@ -4,3 +4,7 @@
       path: welcome.md
     - name: Changelog
       path: changelog.md
+- name: Examples
+  files: 
+    - name: Coming Soon
+      path: comingsoon.md

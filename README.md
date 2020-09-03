@@ -36,7 +36,7 @@ NPM Command: `npm install SmartOAuth`
 
 ## Example usage
 
-See the [docs](https://docs.smart-systems.xyz)! An example will be added there in the near future.
+See the [docs](https://docs.smart-systems.xyz)!
 
 
 ## Links
