@@ -6,5 +6,9 @@
       path: changelog.md
 - name: Examples
   files: 
-    - name: Coming Soon
-      path: comingsoon.md
+    - name: Creating A Server
+      path: createserver.md
+    - name: Adding Discord Intergration
+      path: adddiscord.md
+    - name: Adding Github Intergation
+      path: addgithub.md
