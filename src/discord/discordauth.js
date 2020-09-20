@@ -20,6 +20,10 @@ class Discord {
   constructor (Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.')
     this.Config = Config
+    /**
+     * @type {String[]} The scopes set.
+     */
+    this.Scopes = []
   }
 
   /**
@@ -76,7 +80,7 @@ class Discord {
     })
     if (!data) return 'Invalid Code'
 
-    const user = await get('https://discordapp.com/api/v7/users/@me', {
+    const user = await get('https://discord.com/api/v7/users/@me', {
       headers: {
         Authorization: `Bearer ${data.data.access_token}`
       }
@@ -85,19 +89,46 @@ class Discord {
   }
 
   /**
-   * This functions gives the ability to get information about the user from the code.
+   * This functions gives the ability to get information about the user from the token.
    *
    * @param {String} token  - The token is provided using the getToken method.
    * @returns {DiscordUser} The DiscordUser class is retured which shows the users, ID, profile picture and Nitro status.
    * @memberof Discord
    */
   async getUserFromToken (token) {
-    const user = await get('https://discordapp.com/api/v7/users/@me', {
+    const user = await get('https://discord.com/api/v7/users/@me', {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
     return new DiscordUser(user.data)
+  }
+
+  /**
+   * This functions gives the ability to set the scopes for the redirect URL for discord.
+   *
+   * @param {String[]} Scopes - The scopes to add.
+   * @returns {String[]} The scopes that are currently added.
+   * @memberof Discord
+   */
+  async addScopes (scopes) {
+    const allowedscopes = ['user', 'email', 'guilds', 'connections', 'guilds.join', 'bot']
+    scopes.forEach(value => {
+      if (allowedscopes.includes(value)) {
+        this.Scopes.push(value)
+      }
+    })
+  }
+
+  /**
+   * This functions gives the ability to get the redirect URL for discord.
+   *
+   * @returns {String} The URL to use for redirection.
+   * @memberof Discord
+   */
+  async getURL () {
+    const url = `https://discord.com/api/oauth2/authorize?client_id=${this.Config.client_id}&redirect_uri=${this.Config.callback}&response_type=code&scope=${this.Scopes.join(' ')}`
+    return url
   }
 }
 

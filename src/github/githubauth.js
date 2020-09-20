@@ -3,7 +3,7 @@ const {
   post
 } = require('axios')
 const query = require('querystring')
-const GithubUser = require('./githubuser')
+const GithubUser = require('./githubuser.js')
 
 /**
  *
@@ -20,6 +20,10 @@ class GitHub {
   constructor (Config) {
     if (!Config || !Config.client_secret || !Config.client_id || !Config.callback) throw new Error('Please provide a config.')
     this.Config = Config
+    /**
+     * @type {String[]} The scopes set.
+     */
+    this.Scopes = []
   }
 
   /**
@@ -118,6 +122,33 @@ class GitHub {
       console.error(err)
     }
     return new GithubUser(user.data)
+  }
+
+  /**
+   * This functions gives the ability to set the scopes for the redirect URL.
+   *
+   * @param {String[]} Scopes - The scopes to add.
+   * @returns {String[]} The scopes that are currently added.
+   * @memberof Discord
+   */
+  async addScopes (scopes) {
+    const allowedscopes = ['user']
+    scopes.forEach(value => {
+      if (allowedscopes.includes(value)) {
+        this.Scopes.push(value)
+      }
+    })
+  }
+
+  /**
+   * This functions gives the ability to get the redirect URL.
+   *
+   * @returns {String} The URL to use for redirection.
+   * @memberof Discord
+   */
+  async getURL () {
+    const url = `https://github.com/login/oauth/authorize?client_id=${this.Config.client_id}&redirect_uri=${this.Config.callback}&response_type=code&scope=${this.Scopes.join(' ')}`
+    return url
   }
 }
 
