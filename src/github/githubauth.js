@@ -129,7 +129,7 @@ class GitHub {
    *
    * @param {String[]} Scopes - The scopes to add.
    * @returns {String[]} The scopes that are currently added.
-   * @memberof Discord
+   * @memberof GitHub
    */
   async addScopes (scopes) {
     const allowedscopes = ['user']
@@ -144,7 +144,7 @@ class GitHub {
    * This functions gives the ability to get the redirect URL.
    *
    * @returns {String} The URL to use for redirection.
-   * @memberof Discord
+   * @memberof GitHub
    */
   async getURL () {
     const url = `https://github.com/login/oauth/authorize?client_id=${this.Config.client_id}&redirect_uri=${this.Config.callback}&response_type=code&scope=${this.Scopes.join(' ')}`
